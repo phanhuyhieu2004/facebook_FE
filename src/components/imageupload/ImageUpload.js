@@ -5,7 +5,7 @@ import axios from "axios";
 import "./ImageUpload.css";
 import { useEffect, useRef, useState } from "react";
 
-// import CloseIcon from '@mui/icons-material/Close';
+import DeleteIcon from "@mui/icons-material/Delete";
 function ImageUpload({ onNewPost }) {
     const { user } = useAuth();
     const [open, setOpen] = useState(false);
@@ -114,8 +114,8 @@ function ImageUpload({ onNewPost }) {
         try {
             const formData = new FormData();
             formData.append('content', captions);
-            formData.append('likes', noLikes);
-            formData.append('username', user.username);
+
+
             formData.append('account.account_id', user.account_id);
             formData.append('visibility.visibility_id', selectedVisibility);
             const response = await axios.post('http://localhost:8080/api/posts', formData, {
@@ -182,7 +182,7 @@ function ImageUpload({ onNewPost }) {
                 <div className="makeStyles-paper-1">
                     <div className="modalInit">
                         <h1>Create Post</h1>
-                        {/*<CloseIcon className="closeModalIcon" onClick={handleClose}/>*/}
+                        <DeleteIcon className="closeModalIcon" onClick={handleClose}/>
                     </div>
                     <div className="hr2"/>
                     <div className="profileHead">
@@ -190,7 +190,8 @@ function ImageUpload({ onNewPost }) {
                         <div className="nameVisibility" style={{paddingTop: "5px"}}>
                             <h1>{user?.username}</h1>
                             <select
-                                className='createpost-select'
+                                className='
+'
                                 value={selectedVisibility}
                                 onChange={(e) => setSelectedVisibility(e.target.value)}
                                 style={{height: "20px", background: "white"}}

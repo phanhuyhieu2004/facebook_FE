@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        // Kiểm tra localStorage để khôi phục trạng thái người dùng khi trang được tải lại
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
@@ -17,12 +16,12 @@ export const AuthProvider = ({ children }) => {
 
     const login = (userData) => {
         setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData)); // Lưu thông tin người dùng vào localStorage
+        localStorage.setItem('user', JSON.stringify(userData));
     };
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem('user'); // Xóa thông tin người dùng khỏi localStorage
+        localStorage.removeItem('user');
     };
 
 
